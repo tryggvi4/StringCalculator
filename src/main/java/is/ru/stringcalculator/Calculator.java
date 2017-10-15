@@ -12,7 +12,6 @@ sjá hvort að refactorið hafi brotið eitthvað ->
 Byrja á næsta prófi í listanum. Hringur kominn.*/
 
 public class Calculator {
-
     public static int add(String text){
         if(text == ""){
             return 0;
@@ -30,7 +29,9 @@ public class Calculator {
     private static int sum(String [] numbers){
         int total = 0;
         for(String number : numbers){
-            total += toInt(number); 
+            if(toInt(number)<=1000){
+                total += toInt(number); 
+            }
         }
         
         return total;
