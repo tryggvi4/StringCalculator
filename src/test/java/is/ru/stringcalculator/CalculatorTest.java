@@ -5,7 +5,7 @@ import org.junit.Test;
 
 public class CalculatorTest {
 
-    /*@Test
+    @Test
     public void testEmptyString(){
         assertEquals(0, Calculator.add(""));
     }
@@ -33,7 +33,7 @@ public class CalculatorTest {
     @Test
     public void testIgnoreLargerThen1000(){
         assertEquals(2, Calculator.add("1002,2"));
-    }*/
+    }
 
     @Test
     public void testDiffrentDilimiter(){

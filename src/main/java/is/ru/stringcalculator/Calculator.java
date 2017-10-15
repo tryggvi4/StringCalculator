@@ -16,12 +16,12 @@ public class Calculator {
         String splitString = "[,\n";
         if(text == ""){
             return 0;
-        } else if(text.contains(",") || text.contains("\n") || text.conains("//")){
+        } else if(text.contains(",") || text.contains("\n") || text.contains("//")){
             if(text.substring(0,2).equals("//")){
                 splitString += text.substring(2,3);
-                splitString += "]";
+                text = text.substring(3);
             }
-            text = text.substring(3);
+            splitString += "]";
             String numbers[] = text.split(splitString);
             
             return sum(numbers);
