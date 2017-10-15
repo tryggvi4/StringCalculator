@@ -17,6 +17,12 @@ public class Calculator {
         if(text == ""){
             return 0;
         }
-        return -1;
+        return toInt(text);
     }
+
+    private static int toInt(String number){
+        return Integer.parseInt(number);
+    }
+
+
 }
