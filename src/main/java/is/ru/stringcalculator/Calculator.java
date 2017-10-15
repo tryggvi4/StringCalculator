@@ -13,10 +13,17 @@ Byrja á næsta prófi í listanum. Hringur kominn.*/
 
 public class Calculator {
     public static int add(String text){
+        String splitString = "[,\n";
         if(text == ""){
             return 0;
-        } else if(text.contains(",")){
-            String numbers[] = text.split("[,\n]");
+        } else if(text.contains(",") || text.contains("\n") || text.conains("//")){
+            if(text.substring(0,2).equals("//")){
+                splitString += text.substring(2,3);
+                splitString += "]";
+            }
+            text = text.substring(3);
+            String numbers[] = text.split(splitString);
+            
             return sum(numbers);
         }
         return toInt(text);
@@ -29,7 +36,9 @@ public class Calculator {
     private static int sum(String [] numbers){
         int total = 0;
         for(String number : numbers){
-            if(toInt(number)<=1000){
+            if(number.equals("")){
+
+            }else if(toInt(number)<=1000){
                 total += toInt(number); 
             }
         }
