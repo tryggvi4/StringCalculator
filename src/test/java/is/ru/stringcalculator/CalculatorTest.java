@@ -39,4 +39,11 @@ public class CalculatorTest {
     public void testDiffrentDilimiter(){
         assertEquals(3, Calculator.add("//;\n1;2"));
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testNegativeNumber(){
+        assertEquals("Negatives not allowed: -1", Calculator.add("-1,2"));
+    }
+
+
 }

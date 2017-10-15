@@ -13,24 +13,44 @@ Byrja á næsta prófi í listanum. Hringur kominn.*/
 
 public class Calculator {
     public static int add(String text){
-        String splitString = "[,\n";
-        if(text == ""){
-            return 0;
-        } else if(text.contains(",") || text.contains("\n") || text.contains("//")){
-            if(text.substring(0,2).equals("//")){
-                splitString += text.substring(2,3);
-                text = text.substring(3);
+        try{
+            String splitString = "[,\n";
+            if(text == ""){
+                return 0;
+            } else if(text.contains(",") || text.contains("\n") || text.contains("//")){
+                if(text.substring(0,2).equals("//")){
+                    splitString += text.substring(2,3);
+                    text = text.substring(3);
+                }
+                splitString += "]";
+                String numbers[] = text.split(splitString);
+                Boolean negativeFound = false;
+                String negativeNumbers = "";
+                for(String number : numbers){
+                    if(toInt(number) < 0){
+                        negativeFound = true;
+                        negativeNumbers += number + ",";
+                    }
+                    if(negativeFound){
+                        throw new IllegalArgumentException("Negatives not allowed: " + negativeNumbers);
+                    }
+
+                }
+                
+                return sum(numbers);
             }
-            splitString += "]";
-            String numbers[] = text.split(splitString);
-            
-            return sum(numbers);
+            return toInt(text);
         }
-        return toInt(text);
+        catch(Exception exc){
+            throw exc;
+        }
     }
 
     private static int toInt(String number){
-        return Integer.parseInt(number);
+        if(!number.equals("")){
+            return Integer.parseInt(number);
+        }
+        return 0;
     }
     
     private static int sum(String [] numbers){
